@@ -3,376 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sesión ABP - I.E.P. Cristo te Ama</title>
-
+    <title>Sesión de Aprendizaje - Estructura MINEDU</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Plus Jakarta Sans (Tipografía muy limpia, moderna y legible) -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons para iconografía limpia -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc; /* Slate 50 */
-            color: #0f172a; /* Slate 900 */
-            overflow-x: hidden;
-        }
-
-        /* Animaciones al hacer scroll (Interacción visual) */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Efectos Hover Limpios para las tarjetas */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
-            border-color: #cbd5e1;
-        }
-
-        /* Línea de tiempo decorativa */
-        .timeline-line {
-            position: absolute;
-            left: 2rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #818cf8, #34d399, #fbbf24, #c084fc);
-            z-index: 0;
-        }
-
-        @media (min-width: 768px) {
-            .timeline-line {
-                left: 50%;
-                transform: translateX(-50%);
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        minedu: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            700: '#243b53',
+                            900: '#102a43',
+                        }
+                    }
+                }
             }
         }
-
-        /* Iconos de la línea de tiempo flotantes */
-        .timeline-icon {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+    </script>
+    <style>
+        /* Transiciones suaves para los acordeones */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
         }
-        .card-hover:hover .timeline-icon {
-            transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        .accordion-content.open {
+            max-height: 2000px; /* Suficiente espacio para el contenido */
+            opacity: 1;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .open-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Estilos base de inputs para que se vean limpios */
+        input[type="text"], input[type="date"], input[type="time"], textarea {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            color: #1f2937;
+            background-color: #ffffff;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* ====== Estilos de Impresión ====== */
+        @media print {
+            body {
+                background-color: white;
+                font-size: 11pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            /* Expandir todos los acordeones para imprimir */
+            .accordion-content {
+                max-height: none !important;
+                opacity: 1 !important;
+                overflow: visible !important;
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+                display: block !important;
+            }
+            .accordion-header {
+                pointer-events: none;
+                border-bottom: 2px solid #243b53;
+                background: transparent !important;
+                color: #102a43 !important;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .accordion-header i {
+                display: none;
+            }
+            .shadow-lg, .shadow-sm {
+                box-shadow: none !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            main {
+                background: transparent !important;
+                border: none !important;
+            }
+            /* Simplificar inputs para impresión (que parezcan texto normal si están llenos, o líneas si están vacíos) */
+            input, textarea {
+                border: 1px solid #e5e7eb !important;
+                box-shadow: none !important;
+                background-color: transparent !important;
+            }
+            .print-break-inside-avoid {
+                break-inside: avoid;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-indigo-100 selection:text-indigo-900">
+<body class="bg-minedu-50 text-gray-800 font-sans antialiased pb-20">
 
-    <!-- HEADER / CABECERA -->
-    <header class="relative pt-24 pb-16 px-6 text-center max-w-4xl mx-auto reveal-up">
-        <div class="flex flex-wrap justify-center gap-3 mb-8">
-            <span class="px-4 py-2 bg-white rounded-full text-xs font-bold tracking-widest text-slate-500 uppercase shadow-sm border border-slate-200">
-                <i class="fa-solid fa-school text-indigo-500 mr-2"></i> I.E.P. Cristo te Ama
-            </span>
-            <span class="px-4 py-2 bg-white rounded-full text-xs font-bold tracking-widest text-slate-500 uppercase shadow-sm border border-slate-200">
-                <i class="fa-solid fa-users text-emerald-500 mr-2"></i> 4to Primaria (9 años)
-            </span>
-            <span class="px-4 py-2 bg-white rounded-full text-xs font-bold tracking-widest text-slate-500 uppercase shadow-sm border border-slate-200">
-                <i class="fa-solid fa-book-open text-amber-500 mr-2"></i> Personal social
-            </span>
-        </div>
+    <div class="container mx-auto px-4 max-w-5xl pt-8">
         
-        <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-            Un recreo para <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">todos</span>
-        </h1>
-        <span class="px-4 py-2 bg-white rounded-full text-xs font-bold tracking-widest text-slate-500 uppercase shadow-sm border border-slate-200">
-                <i class="fa-solid fa-users text-emerald-500 mr-2"></i><strong>Grupo 1</strong> 
-            </span><span class="px-4 py-2 bg-white rounded-full text-xs font-bold tracking-widest text-slate-500 uppercase shadow-sm border border-slate-200">
-                <i class="fa-solid fa-users text-emerald-500 mr-2"></i><strong>Estudintes:</strong> Arana Adelina - Callupe Aaron - Inga Estefany - Sanchez Ruth
-            </span><br>
-        <br>
-
-        
-        <p class="text-xl text-slate-600 font-light max-w-2xl mx-auto leading-relaxed">
-            Diseño de Experiencia de Aprendizaje (ABP). Los estudiantes analizarán críticamente el espacio del colegio para diseñar propuestas justas de convivencia.
-        </p>
-    </header>
-
-    <!-- CONTENEDOR PRINCIPAL - LÍNEA DE TIEMPO -->
-    <main class="relative max-w-6xl mx-auto px-6 pb-32">
-        
-        <!-- Línea central conectora -->
-        <div class="timeline-line hidden md:block"></div>
-
-        <!-- PASO 1: INICIO -->
-        <div class="relative flex flex-col md:flex-row items-center justify-between mb-20 reveal-up group">
+        <!-- Header / Controles -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-minedu-900 tracking-tight">Diseño de Sesión de Aprendizaje</h1>
+                <p class="text-sm text-minedu-500 mt-1 font-medium text-lg">¡Un recreo para todos en San Hilarión!</p>
+            </div>
             
-            <!-- Icono Central -->
-            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-16 h-16 bg-white border-4 border-indigo-100 rounded-full items-center justify-center z-10 timeline-icon">
-                <i class="fa-solid fa-bolt text-indigo-500 text-2xl"></i>
-            </div>
+        </div>
 
-            <!-- Contenido Izquierda (Vacío en Desktop) -->
-            <div class="w-full md:w-1/2 md:pr-16 text-right hidden md:block">
-                <h2 class="text-3xl font-black text-slate-800">Momento de Inicio</h2>
-                <p class="text-indigo-500 font-bold uppercase tracking-wider mt-2"><i class="fa-regular fa-clock mr-1"></i> 15 Minutos</p>
-            </div>
-
-            <!-- Tarjeta Derecha -->
-            <div class="w-full md:w-1/2 md:pl-16 relative z-10">
-                <div class="md:hidden mb-4">
-                    <h2 class="text-2xl font-black text-slate-800">1. Inicio</h2>
-                    <p class="text-indigo-500 font-bold uppercase text-sm"><i class="fa-regular fa-clock mr-1"></i> 15 Min</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-50 rounded-bl-full -z-0"></div>
-                    
-                    <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Motivación y Conflicto Cognitivo Real</h3>
-                    
-                    <p class="text-slate-600 leading-relaxed mb-6 relative z-10">
-                        Se inicia la clase planteando una situación real que ocurre en la institución. Se les dice a los estudiantes:
-                    </p>
-                    
-                    <blockquote class="bg-indigo-50/50 border-l-4 border-indigo-400 p-5 rounded-r-xl italic text-slate-700 font-medium mb-6 relative z-10">
-                        "Durante estas últimas semanas, he observado el patio en el recreo y noté que muchos niños de 1ro y 2do grado, y varias compañeras, se quedan sentados en las esquinas o escaleras. Mientras, casi todo el patio está ocupado por un juego de pelota, y a veces hay empujones".
-                    </blockquote>
-
-                    <div class="bg-slate-50 p-5 rounded-2xl relative z-10">
-                        <h4 class="font-bold text-indigo-600 mb-3 text-sm uppercase tracking-wider"><i class="fa-solid fa-comments mr-2"></i>Cuestionamiento Socrático</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-start text-slate-600 text-sm">
-                                <i class="fa-solid fa-arrow-right text-indigo-300 mt-1 mr-3"></i>
-                                ¿Por qué creen que ocurre esto todos los días?
-                            </li>
-                            <li class="flex items-start text-slate-600 text-sm">
-                                <i class="fa-solid fa-arrow-right text-indigo-300 mt-1 mr-3"></i>
-                                ¿Consideran que la forma en que se usa el patio es justa?
-                            </li>
-                            <li class="flex items-start text-slate-600 text-sm">
-                                <i class="fa-solid fa-arrow-right text-indigo-300 mt-1 mr-3"></i>
-                                ¿De quién es realmente el espacio del recreo?
-                            </li>
-                        </ul>
+        <!-- Contenedor Principal del Formulario -->
+        <main class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden text-gray-800">
+            
+            <!-- I. Datos Informativos -->
+            <div class="border-b border-gray-200 print-break-inside-avoid">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('datos-informativos')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">I</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Datos Informativos</h2>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- PASO 2: MAPEO -->
-        <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-20 reveal-up group">
-            
-            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-16 h-16 bg-white border-4 border-blue-100 rounded-full items-center justify-center z-10 timeline-icon">
-                <i class="fa-solid fa-map-location-dot text-blue-500 text-2xl"></i>
-            </div>
-
-            <div class="w-full md:w-1/2 md:pl-16 text-left hidden md:block">
-                <h2 class="text-3xl font-black text-slate-800">Fase 1: Desarrollo</h2>
-                <p class="text-blue-500 font-bold uppercase tracking-wider mt-2"><i class="fa-regular fa-clock mr-1"></i> 15 Minutos</p>
-            </div>
-
-            <div class="w-full md:w-1/2 md:pr-16 relative z-10">
-                <div class="md:hidden mb-4">
-                    <h2 class="text-2xl font-black text-slate-800">2. Fase 1: Desarrollo</h2>
-                    <p class="text-blue-500 font-bold uppercase text-sm"><i class="fa-regular fa-clock mr-1"></i> 15 Min</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-24 h-24 bg-blue-50 rounded-br-full -z-0"></div>
-                    
-                    <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Exploración: El Mapeo del Patio</h3>
-                    
-                    <p class="text-slate-600 leading-relaxed mb-6 relative z-10">
-                        Se forman grupos de 4 integrantes. Se entrega un <strong>"plano mudo"</strong> del colegio (marcando baños, dirección, escaleras) y colores. Salen al patio por 10 minutos con una misión de investigación:
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 relative z-10">
-                        <div class="bg-red-50/50 border border-red-100 p-4 rounded-2xl">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                                <h4 class="font-bold text-red-800">Zona Roja</h4>
-                            </div>
-                            <p class="text-xs text-red-700 leading-relaxed">Pintar áreas de conflicto, pelotazos o dominadas por un solo grupo.</p>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-datos-informativos"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-datos-informativos">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8">
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Institución Educativa</span>
+                            <p class="font-medium text-gray-900">San Hilarión</p>
                         </div>
-                        <div class="bg-emerald-50/50 border border-emerald-100 p-4 rounded-2xl">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                                <h4 class="font-bold text-emerald-800">Zona Verde</h4>
-                            </div>
-                            <p class="text-xs text-emerald-700 leading-relaxed">Pintar las zonas vacías, tranquilas o donde se refugian los pequeños.</p>
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Docente</span>
+                            <p class="font-medium text-gray-900">Aaron Sixto Callupe Llallico</p>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Área Curricular</span>
+                            <p class="font-medium text-gray-900">Personal Social</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Grado y Sección</span>
+                            <p class="font-medium text-gray-900">4to de Primaria <span class="text-gray-500 font-normal">(9 años - etapa de operaciones concretas)</span></p>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Duración</span>
+                            <p class="font-medium text-gray-900">30 minutos</p>
                         </div>
                     </div>
-
-                    <p class="text-slate-600 text-sm font-medium border-l-2 border-blue-400 pl-4 relative z-10">
-                        Al regresar, pegan sus mapas en la pizarra. Se les pide observar los resultados: <strong>"¿Qué nos dicen estas manchas rojas sobre nuestra convivencia?"</strong>
-                    </p>
                 </div>
             </div>
-        </div>
 
-        <!-- PASO 3: EMPATÍA -->
-        <div class="relative flex flex-col md:flex-row items-center justify-between mb-20 reveal-up group">
-            
-            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-16 h-16 bg-white border-4 border-emerald-100 rounded-full items-center justify-center z-10 timeline-icon">
-                <i class="fa-solid fa-hands-holding-child text-emerald-500 text-2xl"></i>
-            </div>
+            <!-- II. Propósitos de Aprendizaje -->
+            <div class="border-b border-gray-200 print-break-inside-avoid">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('propositos')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">II</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Propósitos de Aprendizaje</h2>
+                    </div>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-propositos"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-propositos">
+                    <div class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+                                <span class="block text-sm font-bold text-blue-900 mb-2">Competencia (CNEB)</span>
+                                <p class="text-sm text-gray-800 leading-relaxed">Convive y participa democráticamente en la búsqueda del bien común.</p>
+                            </div>
+                            <div class="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+                                <span class="block text-sm font-bold text-blue-900 mb-2">Capacidades</span>
+                                <ul class="list-disc list-inside text-sm text-gray-800 space-y-1">
+                                    <li>Interactúa con todas las personas.</li>
+                                    <li>Construye normas y asume acuerdos y leyes.</li>
+                                    <li>Maneja conflictos de manera constructiva.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <span class="block text-sm font-bold text-gray-700 mb-1">Desempeño</span>
+                            <p class="text-sm text-gray-800 bg-gray-50 p-3 rounded border border-gray-200">Participa en la elaboración de acuerdos de convivencia en el patio, escucha las propuestas de sus compañeros y explica la importancia de la participación de todos.</p>
+                        </div>
+                        
+                        <div>
+                            <span class="block text-sm font-bold text-gray-700 mb-1">Enfoques Transversales</span>
+                            <p class="text-sm text-gray-800 flex items-center gap-2">
+                                <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded-md text-xs font-semibold">Enfoque de Derechos</span>
+                                <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded-md text-xs font-semibold">Enfoque de Igualdad de Género</span>
+                            </p>
+                        </div>
 
-            <div class="w-full md:w-1/2 md:pr-16 text-right hidden md:block">
-                <h2 class="text-3xl font-black text-slate-800">Fase 2: Desarrollo</h2>
-                <p class="text-emerald-500 font-bold uppercase tracking-wider mt-2"><i class="fa-regular fa-clock mr-1"></i> 10 Minutos</p>
-            </div>
-
-            <div class="w-full md:w-1/2 md:pl-16 relative z-10">
-                <div class="md:hidden mb-4">
-                    <h2 class="text-2xl font-black text-slate-800">3. Fase 2: Desarrollo</h2>
-                    <p class="text-emerald-500 font-bold uppercase text-sm"><i class="fa-regular fa-clock mr-1"></i> 10 Min</p>
+                        <div class="mt-4 border-l-4 border-orange-500 pl-4 py-1">
+                            <span class="block text-sm font-bold text-orange-700 mb-1">Problema Real (Conflicto Cognitivo)</span>
+                            <p class="text-sm text-gray-800 italic">Los estudiantes discuten constantemente por el uso de las canchas de fútbol durante el recreo, excluyendo a las niñas y a los niños más pequeños.</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover relative overflow-hidden">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Empatía: Dinámica Lúdica</h3>
+            <!-- III. Secuencia Didáctica -->
+            <div class="border-b border-gray-200">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('secuencia')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">III</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Secuencia Didáctica</h2>
+                    </div>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-secuencia"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-secuencia">
                     
-                    <p class="text-slate-600 leading-relaxed mb-6">
-                        Para conectar el análisis visual con la empatía y superar el egocentrismo, se realiza <strong>"El juego de los zapatos cambiados"</strong>.
-                    </p>
+                    <div class="space-y-6">
+                        <!-- INICIO -->
+                        <div class="border border-green-200 rounded-lg overflow-hidden print-break-inside-avoid">
+                            <div class="bg-green-50 px-5 py-3 border-b border-green-200 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                                <div>
+                                    <h3 class="font-bold text-green-900 text-lg">INICIO <span class="text-sm font-normal text-green-700 ml-2">- Fase de Exploración</span></h3>
+                                </div>
+                                <div class="inline-block bg-green-200 text-green-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    10 minutos
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white space-y-4">
+                                <div class="text-sm">
+                                    <span class="font-bold text-gray-800">Anclaje en la realidad:</span> Salida al patio real para evitar respuestas teóricas automáticas.
+                                </div>
+                                <ul class="space-y-3 text-sm text-gray-700">
+                                    <li class="flex gap-3"><i class="ph-fill ph-check-circle text-green-500 text-lg mt-0.5"></i> <div><strong>Paso 1 (Mapeo Físico):</strong> Los estudiantes salen con hojas y colores. Dibujan un croquis rápido del patio escolar.</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-check-circle text-green-500 text-lg mt-0.5"></i> <div><strong>Paso 2 (Identificación):</strong> Pintan de rojo las zonas que ocupan los que juegan fútbol, y de azul los espacios sobrantes para los demás.</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-check-circle text-green-500 text-lg mt-0.5"></i> <div><strong>Paso 3 (Andamiaje Docente):</strong> Aplicación de cuestionamiento socrático profundo: <span class="italic text-gray-900">"¿Cómo sabes que esa distribución es justa?"</span> y <span class="italic text-gray-900">"¿Qué pasaría si todos quisiéramos usar el centro del patio al mismo tiempo?"</span>.</div></li>
+                                </ul>
+                            </div>
+                        </div>
 
-                    <div class="bg-slate-50 border border-slate-100 p-5 rounded-2xl mb-6">
-                        <i class="fa-solid fa-compress text-emerald-400 text-xl mb-3 block"></i>
-                        <p class="text-sm text-slate-700 leading-relaxed">
-                            Se delimita con cinta un espacio muy reducido en una esquina del aula. Se indica que la mitad del salón debe pararse en ese pequeño cuadrado sin moverse mucho, mientras la otra mitad tiene permitido caminar, conversar y usar todo el resto del salón libremente.
-                        </p>
+                        <!-- DESARROLLO -->
+                        <div class="border border-yellow-300 rounded-lg overflow-hidden print-break-inside-avoid shadow-sm">
+                            <div class="bg-yellow-50 px-5 py-3 border-b border-yellow-200 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                                <div>
+                                    <h3 class="font-bold text-yellow-900 text-lg">DESARROLLO <span class="text-sm font-normal text-yellow-700 ml-2">- Fase de Empatía</span></h3>
+                                </div>
+                                <div class="inline-block bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    10 minutos
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white space-y-4">
+                                <div class="text-sm bg-yellow-50/50 p-3 rounded border-l-2 border-yellow-400">
+                                    <span class="font-bold text-gray-800">Motor Lúdico:</span> Uso del juego para superar el egocentrismo y fomentar la empatía cognitiva y el análisis multiperspectiva (Pérez Arteaga, 2020).
+                                </div>
+                                <ul class="space-y-3 text-sm text-gray-700">
+                                    <li class="flex gap-3"><i class="ph-fill ph-play-circle text-yellow-500 text-lg mt-0.5"></i> <div><strong>Paso 1 (Preparación):</strong> El docente delimita un espacio muy pequeño en el patio usando tizas o aros.</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-users-three text-yellow-500 text-lg mt-0.5"></i> <div><strong>Paso 2 (Roles Cruzados):</strong> Los niños que usualmente juegan fútbol asumen el rol de <span class="italic">"los más pequeños que quieren correr"</span>, mientras que las niñas o niños pequeños toman el rol de <span class="italic">"los futbolistas"</span>.</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-person-simple-run text-yellow-500 text-lg mt-0.5"></i> <div><strong>Paso 3 (Experimentación):</strong> Intentan realizar sus actividades lúdicas simultáneamente dentro del espacio reducido.</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-brain text-yellow-500 text-lg mt-0.5"></i> <div><strong>Paso 4 (Metacognición):</strong> Tras chocar o frustrarse, se detiene el juego. Los estudiantes verbalizan cómo se sintieron en ese rol, asimilando la experiencia de exclusión.</div></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CIERRE -->
+                        <div class="border border-red-200 rounded-lg overflow-hidden print-break-inside-avoid">
+                            <div class="bg-red-50 px-5 py-3 border-b border-red-200 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                                <div>
+                                    <h3 class="font-bold text-red-900 text-lg">CIERRE <span class="text-sm font-normal text-red-700 ml-2">- Fase de Resolución</span></h3>
+                                </div>
+                                <div class="inline-block bg-red-200 text-red-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    10 minutos
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white space-y-4">
+                                <div class="text-sm">
+                                    <span class="font-bold text-gray-800">Co-creación y Agencia Social:</span> Uso de la creatividad grupal para lograr consenso y acción transformadora (Sanz de Acedo, 2008).
+                                </div>
+                                <ul class="space-y-3 text-sm text-gray-700">
+                                    <li class="flex gap-3"><i class="ph-fill ph-arrow-fat-lines-right text-red-400 text-lg mt-0.5"></i> <div><strong>Paso 1 (Organización):</strong> Retorno al aula y formación de grupos cooperativos.</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-identification-card text-red-400 text-lg mt-0.5"></i> <div><strong>Paso 2 (Roles de Grupo):</strong> Se asignan roles: un <strong>'diseñador'</strong> (propone la idea), un <strong>'crítico'</strong> (evalúa si es justa para todos) y un <strong>'comunicador'</strong> (expone al aula).</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-chats text-red-400 text-lg mt-0.5"></i> <div><strong>Paso 3 (Debate):</strong> Los estudiantes debaten y estructuran soluciones reales (ej. turnos por días, división equitativa, juegos integrados).</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-file-text text-red-400 text-lg mt-0.5"></i> <div><strong>Paso 4 (Producto Final):</strong> Redacción colectiva y fundamentada del <strong>'Acuerdo de Convivencia del Patio'</strong>.</div></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <p class="text-slate-600 font-medium text-sm leading-relaxed">
-                        A los pocos minutos, se detiene la dinámica y se reflexiona:<br>
-                        <span class="text-emerald-700 italic">"Los que estaban en el espacio reducido, ¿cómo se sintieron al ver a los demás con tanto espacio? ¿Cómo se conecta este juego con los niños de primer grado en el patio?"</span>
-                    </p>
                 </div>
             </div>
-        </div>
 
-        <!-- PASO 4: IDEACIÓN -->
-        <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-20 reveal-up group">
+            <!-- IV. Evaluación y Recursos -->
+            <div class="print-break-inside-avoid">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('evaluacion')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">IV</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Evaluación y Recursos</h2>
+                    </div>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-evaluacion"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-evaluacion">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-2">
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="ph ph-medal text-xl text-minedu-700"></i>
+                                <span class="block text-sm font-bold text-gray-700 uppercase">Evidencia de Aprendizaje</span>
+                            </div>
+                            <p class="text-sm text-gray-800">'Acuerdo de Convivencia del Patio' validado socialmente.</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="ph ph-clipboard-text text-xl text-minedu-700"></i>
+                                <span class="block text-sm font-bold text-gray-700 uppercase">Instrumento de Evaluación</span>
+                            </div>
+                            <p class="text-sm text-gray-800">Lista de Cotejo.</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="ph ph-toolbox text-xl text-minedu-700"></i>
+                                <span class="block text-sm font-bold text-gray-700 uppercase">Recursos y Materiales</span>
+                            </div>
+                            <p class="text-sm text-gray-800">Hojas bond, colores (rojo/azul), tizas/aros, papelotes, plumones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-16 h-16 bg-white border-4 border-amber-100 rounded-full items-center justify-center z-10 timeline-icon">
-                <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
-            </div>
+        </main>
+        
+        
 
-            <div class="w-full md:w-1/2 md:pl-16 text-left hidden md:block">
-                <h2 class="text-3xl font-black text-slate-800">Fase 3: Desarrollo</h2>
-                <p class="text-amber-500 font-bold uppercase tracking-wider mt-2"><i class="fa-regular fa-clock mr-1"></i> 30 Minutos</p>
-            </div>
+    </div>
 
-            <div class="w-full md:w-1/2 md:pr-16 relative z-10">
-                <div class="md:hidden mb-4">
-                    <h2 class="text-2xl font-black text-slate-800">4. Fase 3: Desarrollo</h2>
-                    <p class="text-amber-500 font-bold uppercase text-sm"><i class="fa-regular fa-clock mr-1"></i> 30 Min</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover relative overflow-hidden">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Resolución y Lluvia de ideas</h3>
-                    
-                    <div class="mb-6">
-                        <p class="text-slate-600 leading-relaxed mb-3">
-                            Se plantea el reto a los grupos. Tienen que idear una solución viable. Se establece una regla estricta para forzar el pensamiento creativo:
-                        </p>
-                        <p class="bg-amber-100 text-amber-900 font-bold px-4 py-2 rounded-lg inline-block text-sm">
-                            <i class="fa-solid fa-ban mr-2"></i> Está prohibido proponer "ya no se juega fútbol".
-                        </p>
-                    </div>
-
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6 italic">
-                        Se les anima a pensar diferente: ¿Qué pasaría si el patio cambia de reglas según el día? ¿Y si creamos un juego nuevo que mezcle a grandes y chicos? ¿Y si dividimos el espacio con tizas?
-                    </p>
-
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-sm text-slate-700 leading-relaxed flex gap-3 items-start">
-                        <i class="fa-solid fa-comments text-amber-500 mt-1"></i>
-                        <p>Cada grupo expone su idea. Mediante debate guiado, toda el aula vota y fusiona las mejores propuestas para redactar el <strong>"Nuevo Tratado del Recreo"</strong>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- PASO 5: CIERRE -->
-        <div class="relative flex flex-col md:flex-row items-center justify-between mb-10 reveal-up group">
-            
-            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-16 h-16 bg-white border-4 border-purple-100 rounded-full items-center justify-center z-10 timeline-icon">
-                <i class="fa-solid fa-file-signature text-purple-500 text-2xl"></i>
-            </div>
-
-            <div class="w-full md:w-1/2 md:pr-16 text-right hidden md:block">
-                <h2 class="text-3xl font-black text-slate-800">Momento de Cierre</h2>
-                <p class="text-purple-500 font-bold uppercase tracking-wider mt-2"><i class="fa-regular fa-clock mr-1"></i> 20 Minutos</p>
-            </div>
-
-            <div class="w-full md:w-1/2 md:pl-16 relative z-10">
-                <div class="md:hidden mb-4">
-                    <h2 class="text-2xl font-black text-slate-800">5. Cierre</h2>
-                    <p class="text-purple-500 font-bold uppercase text-sm"><i class="fa-regular fa-clock mr-1"></i> 20 Min</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover relative overflow-hidden border-t-4 border-t-purple-500">
-                    <h3 class="text-xl font-bold text-slate-900 mb-6">Acción Transformadora y Metacognición</h3>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-pen text-purple-400 mt-1"></i>
-                            <span class="text-slate-600 text-sm leading-relaxed">Los estudiantes trasladan el acuerdo a un papelógrafo y todos firman su compromiso.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-envelope-open-text text-purple-400 mt-1"></i>
-                            <span class="text-slate-600 text-sm leading-relaxed">Redactan una carta breve con sus palabras dirigida a la dirección del colegio, solicitando que su propuesta sea evaluada e implementada como plan piloto.</span>
-                        </li>
-                    </ul>
-
-                    <div class="bg-purple-50 p-5 rounded-2xl">
-                        <h4 class="font-bold text-purple-800 mb-3 text-sm uppercase tracking-wider"><i class="fa-solid fa-brain mr-2"></i>Metacognición Final</h4>
-                        <ul class="space-y-2 text-sm text-purple-900/80 font-medium">
-                            <li>• ¿Qué fue lo más difícil al buscar una solución sin prohibir?</li>
-                            <li>• ¿Por qué es importante ponernos en el lugar de los demás antes de inventar una regla?</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- FOOTER / NOTA INFORMATIVA -->
-    <footer class="bg-white border-t border-slate-200 py-10 px-6 text-center reveal-up">
-        <div class="max-w-2xl mx-auto flex flex-col items-center gap-3">
-            <i class="fa-solid fa-circle-info text-slate-300 text-2xl"></i>
-            <p class="text-sm text-slate-500 font-medium leading-relaxed">
-                <strong class="text-slate-700">Nota Pedagógica:</strong> El uso del croquis real del colegio y la redacción de una carta verídica para la dirección hacen que el conflicto deje de ser un caso de estudio y se convierta en un problema auténtico del ABP.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Script Interactivo (Scroll Animation) -->
+    <!-- Script para lógica de los acordeones -->
     <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('open-chevron');
+            } else {
+                content.classList.add('open');
+                icon.classList.add('open-chevron');
+            }
+        }
+
+        // Inicializar íconos en estado abierto ya que inician con clase 'open'
         document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 // El elemento aparece cuando el 15% es visible
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, observerOptions);
-
-            const revealElements = document.querySelectorAll('.reveal-up');
-            revealElements.forEach(el => observer.observe(el));
+            const accordions = ['datos-informativos', 'propositos', 'secuencia', 'evaluacion'];
+            accordions.forEach(id => {
+                const icon = document.getElementById(`icon-${id}`);
+                if(icon) {
+                    icon.classList.add('open-chevron');
+                }
+            });
         });
     </script>
 </body>
