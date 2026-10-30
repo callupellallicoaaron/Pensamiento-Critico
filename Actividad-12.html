@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión de Aprendizaje - Estructura MINEDU</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons para iconografía limpia -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        minedu: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            700: '#243b53',
+                            900: '#102a43',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-content.open {
+            max-height: 4000px;
+            opacity: 1;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .open-chevron {
+            transform: rotate(180deg);
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                font-size: 11pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .accordion-content {
+                max-height: none !important;
+                opacity: 1 !important;
+                overflow: visible !important;
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+                display: block !important;
+            }
+            .accordion-header {
+                pointer-events: none;
+                border-bottom: 2px solid #243b53;
+                background: transparent !important;
+                color: #102a43 !important;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .accordion-header i {
+                display: none;
+            }
+            .shadow-lg, .shadow-sm {
+                box-shadow: none !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            main {
+                background: transparent !important;
+                border: none !important;
+            }
+            .print-break-inside-avoid {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-minedu-50 text-gray-800 font-sans antialiased pb-20">
+
+    <div class="container mx-auto px-4 max-w-5xl pt-8">
+        
+        <!-- Header / Controles -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-minedu-900 tracking-tight">Diseño de Sesión de Aprendizaje</h1>
+                <p class="text-sm text-minedu-500 mt-1 font-medium text-lg">"Caja de Retos Creativos: Aprovechando la Lluvia"</p>
+            </div>
+            
+        </div>
+
+        <!-- Contenedor Principal del Documento -->
+        <main class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden text-gray-800">
+            
+            <!-- I. Datos Informativos -->
+            <div class="border-b border-gray-200 print-break-inside-avoid">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('datos-informativos')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">I</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Datos Informativos</h2>
+                    </div>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-datos-informativos"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-datos-informativos">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8">
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Institución Educativa</span>
+                            <p class="font-medium text-gray-900">I.E.P. Cristo Te Ama - Tarma</p>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Docente</span>
+                            <p class="font-medium text-gray-900">Callupe Aaron - Arana Adelina - Inga Estefany - Sanchez Ruth</p>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Área Curricular</span>
+                            <p class="font-medium text-gray-900">Ciencia y Tecnología</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Grado y Ciclo</span>
+                            <p class="font-medium text-gray-900">V Ciclo de Primaria <span class="text-gray-500 font-normal">(10 a 11 años)</span></p>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Duración</span>
+                            <p class="font-medium text-gray-900">45 minutos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- II. Propósitos de Aprendizaje y Diagnóstico -->
+            <div class="border-b border-gray-200 print-break-inside-avoid">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('propositos')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">II</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Propósitos de Aprendizaje (CNEB) y Diagnóstico</h2>
+                    </div>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-propositos"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-propositos">
+                    <div class="space-y-6">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-blue-50/60 p-4 rounded-lg border border-blue-200">
+                                <span class="block text-xs font-bold text-blue-900 uppercase tracking-wider mb-2">Competencia Principal</span>
+                                <p class="text-sm font-bold text-gray-900 leading-relaxed mb-2">Diseña y construye soluciones tecnológicas para resolver problemas de su entorno.</p>
+                            </div>
+                            <div class="bg-blue-50/60 p-4 rounded-lg border border-blue-200">
+                                <span class="block text-xs font-bold text-blue-900 uppercase tracking-wider mb-2">Capacidades</span>
+                                <ul class="list-disc list-inside text-sm text-gray-800 space-y-1.5">
+                                    <li>Determina una alternativa de solución tecnológica.</li>
+                                    <li>Diseña la alternativa de solución tecnológica.</li>
+                                    <li>Implementa y valida la alternativa de solución tecnológica.</li>
+                                    <li>Evalúa y comunica el funcionamiento de su prototipo.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <span class="block text-sm font-bold text-gray-800 mb-1"><i class="ph-fill ph-check-square-offset text-minedu-700 mr-1"></i> Criterios de Evaluación</span>
+                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                    <li>Plantea múltiples ideas para captar agua sin censura.</li>
+                                    <li>Fusiona ideas para seleccionar la opción más viable.</li>
+                                    <li>Asume su rol asignado con responsabilidad individual.</li>
+                                    <li>Reflexiona sobre las fallas y rediseños del boceto.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-50/70 p-4 rounded-lg border border-indigo-200">
+                            <span class="block text-xs font-bold text-indigo-900 uppercase tracking-wider mb-1">Problema Auténtico y Reto</span>
+                            <p class="text-sm font-medium text-indigo-950">Durante las lluvias en la IEP Cristo Te Ama, se generan charcos que dificultan el paso y desperdician agua. ¿De qué formas podemos diseñar un sistema o prototipo casero, usando solo materiales reciclados, para captar, canalizar y aprovechar esta lluvia en nuestras áreas verdes?</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-sm font-bold text-gray-700 mb-2">Enfoques Transversales</span>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-3 p-3 bg-emerald-50/60 border border-emerald-200 rounded-lg">
+                                    <span class="px-2.5 py-1 bg-emerald-200 text-emerald-900 rounded-md text-xs font-bold whitespace-nowrap">Enfoque Ambiental</span>
+                                    <p class="text-xs text-gray-700">Se fomenta la optimización de recursos reales (agua de lluvia) y el uso exclusivo de materiales reciclados.</p>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 bg-purple-50/60 border border-purple-200 rounded-lg">
+                                    <span class="px-2.5 py-1 bg-purple-200 text-purple-900 rounded-md text-xs font-bold whitespace-nowrap">Orientación al Bien Común</span>
+                                    <p class="text-xs text-gray-700">Responsabilidad individual en el trabajo colaborativo: "nos salvamos todos o ninguno" para lograr el reto del equipo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="border-gray-200">
+
+                        <div>
+                            <h3 class="text-sm font-bold text-minedu-900 uppercase tracking-wider mb-3">Diagnóstico y Justificación Pedagógica</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="border-l-4 border-orange-500 bg-orange-50/40 pl-3 py-2 pr-2 rounded-r">
+                                    <span class="block text-xs font-bold text-orange-800 uppercase mb-1">Desarrollo Evolutivo</span>
+                                    <p class="text-xs text-gray-800">Los estudiantes (10-11 años) han alcanzado la autorregulación necesaria para estructurar equipos y debates formales.</p>
+                                </div>
+                                <div class="border-l-4 border-red-500 bg-red-50/40 pl-3 py-2 pr-2 rounded-r">
+                                    <span class="block text-xs font-bold text-red-800 uppercase mb-1">Nivel Cognitivo</span>
+                                    <p class="text-xs text-gray-800">Abandonan progresivamente el egocentrismo, logrando consolidar la "inteligencia compartida".</p>
+                                </div>
+                                <div class="border-l-4 border-teal-600 bg-teal-50/40 pl-3 py-2 pr-2 rounded-r">
+                                    <span class="block text-xs font-bold text-teal-900 uppercase mb-1">Ruta de Indagación</span>
+                                    <p class="text-xs text-gray-800">Se aplicará una indagación sistémica orientada a la optimización de recursos reales para resolver un problema de su entorno.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- III. Secuencia Didáctica -->
+            <div class="border-b border-gray-200">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('secuencia')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">III</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Secuencia Didáctica (45 min)</h2>
+                    </div>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-secuencia"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-secuencia">
+                    
+                    <div class="space-y-6">
+                        <!-- INICIO -->
+                        <div class="border border-green-200 rounded-lg overflow-hidden print-break-inside-avoid">
+                            <div class="bg-green-50 px-5 py-3 border-b border-green-200 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                                <div>
+                                    <h3 class="font-bold text-green-900 text-lg">INICIO: Inmersión y Comprensión</h3>
+                                </div>
+                                <div class="inline-block bg-green-200 text-green-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    10 minutos
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white space-y-4">
+                                <ul class="space-y-3 text-sm text-gray-700">
+                                    <li class="flex gap-3"><i class="ph-fill ph-cloud-rain text-green-600 text-xl mt-0.5"></i> <div><strong>Paso 1:</strong> Se presenta el caso real de los aniegos en las zonas del patio del colegio debido a la temporada de lluvias intensas en Tarma. A través del diálogo, se ejecuta la fase de inmersión para delimitar el obstáculo auténtico.</div></li>
+                                    <li class="flex gap-3"><i class="ph-fill ph-magnifying-glass text-green-600 text-xl mt-0.5"></i> <div><strong>Paso 2:</strong> Se pide a los estudiantes identificar claramente qué saben sobre el problema (ej. en qué zonas exactas se empoza más el agua) y qué les falta saber (ej. cómo funciona un canal de agua o una tubería para dirigirla a las áreas verdes).</div></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- DESARROLLO -->
+                        <div class="border border-yellow-300 rounded-lg overflow-hidden shadow-sm">
+                            <div class="bg-yellow-50 px-5 py-3 border-b border-yellow-200 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                                <div>
+                                    <h3 class="font-bold text-yellow-900 text-lg">DESARROLLO: Ideación y Roles</h3>
+                                </div>
+                                <div class="inline-block bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    25 minutos
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white space-y-4">
+                                
+                                <ul class="space-y-5 text-sm text-gray-700">
+                                    <li class="flex gap-3">
+                                        <i class="ph-fill ph-users-three text-yellow-600 text-xl mt-0.5"></i> 
+                                        <div>
+                                            <strong>Interdependencia y Roles:</strong> Se agrupa a los estudiantes (4 a 5 por equipo) estableciendo una regla de interdependencia positiva ("nos salvamos todos o ninguno"). Se otorgan roles específicos: coordinador, diseñador, gestor de materiales y evaluador, asegurando la responsabilidad individual.
+                                        </div>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <i class="ph-fill ph-arrows-out text-yellow-600 text-xl mt-0.5"></i> 
+                                        <div>
+                                            <strong>Fase de Divergencia:</strong> Los equipos aplican el "Pensamiento Verde" (técnica de De Bono) para la producción libre de alternativas y prototipos de captación de agua. Se fomenta el pensamiento divergente donde no hay censura de ideas.
+                                        </div>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <i class="ph-fill ph-arrows-in text-yellow-600 text-xl mt-0.5"></i> 
+                                        <div>
+                                            <strong>Fase de Convergencia:</strong> El equipo realiza una fusión analítica de todas las ideas propuestas. Mediante la "inteligencia compartida", seleccionan la opción más viable y proceden a elaborar en papel el boceto final de su solución (co-creación).
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <!-- CIERRE -->
+                        <div class="border border-red-200 rounded-lg overflow-hidden print-break-inside-avoid">
+                            <div class="bg-red-50 px-5 py-3 border-b border-red-200 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                                <div>
+                                    <h3 class="font-bold text-red-900 text-lg">CIERRE: Metacognición del error</h3>
+                                </div>
+                                <div class="inline-block bg-red-200 text-red-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    10 minutos
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white space-y-4">
+                                <ul class="space-y-3 text-sm text-gray-700">
+                                    <li class="flex gap-3"><i class="ph-fill ph-presentation-chart text-red-500 text-xl mt-0.5"></i> <div><strong>Socialización:</strong> Los equipos muestran rápidamente sus diseños (bocetos). Se realiza una valoración conjunta enfocada explícitamente en "aprender del error".</div></li>
+                                    
+                                    <div class="bg-red-50 border border-red-100 rounded p-4 mt-2">
+                                        <span class="block font-bold text-red-800 mb-2">Demanda de Co-creación: 3 Preguntas Clave</span>
+                                        <ol class="list-decimal list-inside space-y-2 text-red-900 font-medium">
+                                            <li>¿Qué idea técnica parecía excelente durante la lluvia de ideas, pero descubrieron que no funcionaría al momento de seleccionar los materiales reales, y por qué?</li>
+                                            <li>¿Qué obstáculo específico o desacuerdo encontraron al intentar unificar las ideas de todos en un solo diseño, y cómo lograron resolverlo de manera justa?</li>
+                                            <li>Si tuviéramos que probar el prototipo mañana y ocurriera una fuga, ¿qué aspecto estructural de su diseño creen que sería el más frágil y cómo lo rediseñarían?</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <li class="flex gap-3 mt-2"><i class="ph-fill ph-check-square text-red-500 text-xl mt-0.5"></i> <div><strong>Procesamiento Grupal:</strong> Se realiza una autoevaluación rápida donde los estudiantes evalúan el desempeño y la dinámica de su propio equipo, identificando bloqueos en el proceso creativo.</div></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- IV. Evaluación y Recursos -->
+            <div class="print-break-inside-avoid">
+                <button class="accordion-header w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition-colors text-left focus:outline-none" onclick="toggleAccordion('evaluacion')">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-minedu-700 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">IV</span>
+                        <h2 class="text-lg font-bold text-minedu-900 uppercase tracking-wide">Evaluación y Recursos</h2>
+                    </div>
+                    <i class="ph ph-caret-down text-xl text-gray-500 chevron" id="icon-evaluacion"></i>
+                </button>
+                <div class="accordion-content px-6 open" id="content-evaluacion">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-2">
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="ph ph-medal text-xl text-minedu-700"></i>
+                                <span class="block text-sm font-bold text-gray-700 uppercase">Evidencia de Aprendizaje</span>
+                            </div>
+                            <p class="text-sm text-gray-800">El boceto final del sistema de captación co-creado por el equipo y la exposición oral reflexiva respondiendo a las preguntas de metacognición.</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="ph ph-clipboard-text text-xl text-minedu-700"></i>
+                                <span class="block text-sm font-bold text-gray-700 uppercase">Instrumento de Evaluación</span>
+                            </div>
+                            <p class="text-sm text-gray-800">Ficha de procesamiento y autoevaluación grupal para medir el cumplimiento de roles y la capacidad de resolver desacuerdos.</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="ph ph-toolbox text-xl text-minedu-700"></i>
+                                <span class="block text-sm font-bold text-gray-700 uppercase">Recursos y Materiales</span>
+                            </div>
+                            <p class="text-sm text-gray-800">Fotografías o testimonios de los aniegos del colegio, papelotes, plumones, y tarjetas descriptivas de los 4 roles de trabajo en equipo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        
+        
+    </div>
+
+    <!-- Script para acordeones -->
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('open-chevron');
+            } else {
+                content.classList.add('open');
+                icon.classList.add('open-chevron');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordions = ['datos-informativos', 'propositos', 'secuencia', 'evaluacion'];
+            accordions.forEach(id => {
+                const icon = document.getElementById(`icon-${id}`);
+                if(icon) {
+                    icon.classList.add('open-chevron');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
