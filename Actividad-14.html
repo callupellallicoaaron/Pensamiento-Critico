@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Sesión: Nuestra huella en el recreo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4; /* Light green background */
+        }
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #10b981; /* Emerald 500 */
+            border: 4px solid #d1fae5; /* Emerald 100 */
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-green-200 selection:text-green-900">
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-br from-green-700 via-emerald-600 to-teal-600 text-white pt-16 pb-24 px-6 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <!-- Decorative SVG Pattern -->
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="leaf-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <path d="M50 15C50 15 40 30 20 30C20 30 30 50 50 50C50 50 70 30 70 30C50 30 50 15 50 15Z" fill="currentColor"/>
+                    </pattern>
+                </defs>
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#leaf-pattern)" />
+            </svg>
+        </div>
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-green-900/30 text-green-100 text-sm font-semibold tracking-wide mb-4 backdrop-blur-sm border border-green-400/30">
+                Plan de Sesión de Aprendizaje
+            </span>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Nuestra huella en el recreo: <br class="hidden md:block">
+                <span class="text-green-200">De la contaminación a la acción digital</span>
+            </h1>
+            <div class="flex items-center justify-center space-x-2 text-green-100 font-medium bg-black/10 inline-flex px-4 py-2 rounded-lg backdrop-blur-sm">
+                <i class="ph ph-users text-xl"></i>
+                <span>Grupo 1: Aaron - Adelina - Estefany - Ruth</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20 pb-20">
+        
+        <!-- I. DATOS INFORMATIVOS -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-green-50">
+            <h2 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+                <i class="ph-fill ph-info text-green-500 mr-3 text-3xl"></i>
+                I. Datos Informativos
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                    <p class="text-sm text-green-600 font-semibold mb-1 uppercase tracking-wider">Institución Educativa</p>
+                    <p class="font-medium text-gray-800">I.E.P. Cristo te Ama (Tarma)</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                    <p class="text-sm text-green-600 font-semibold mb-1 uppercase tracking-wider">Nivel / Ciclo</p>
+                    <p class="font-medium text-gray-800">Primaria / V Ciclo <br><span class="text-sm text-gray-500">(5° y 6° Grado)</span></p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                    <p class="text-sm text-green-600 font-semibold mb-1 uppercase tracking-wider">Edad de los estudiantes</p>
+                    <p class="font-medium text-gray-800">10 a 11 años</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100 lg:col-span-2">
+                    <p class="text-sm text-green-600 font-semibold mb-1 uppercase tracking-wider">Área Curricular</p>
+                    <p class="font-medium text-gray-800">Ciencia y Tecnología / Personal Social</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                    <p class="text-sm text-green-600 font-semibold mb-1 uppercase tracking-wider">Tiempo estimado</p>
+                    <p class="font-medium text-gray-800 flex items-center">
+                        <i class="ph ph-clock mr-2 text-lg"></i> 90 minutos
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- II & III: Fundamentación y Situación -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            
+            <!-- II. FUNDAMENTACIÓN -->
+            <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-green-50 flex flex-col h-full">
+                <h2 class="text-xl font-bold text-green-800 mb-4 flex items-center">
+                    <i class="ph-fill ph-book-open-text text-green-500 mr-3 text-2xl"></i>
+                    II. Fundamentación y Coherencia Pedagógica
+                </h2>
+                <div class="bg-emerald-50 rounded-xl p-5 flex-grow border-l-4 border-emerald-500 text-gray-700 leading-relaxed">
+                    <p class="italic">"Justificación del docente"</p>
+                    <p class="mt-2">En esta sesión combinamos el <strong>Aprendizaje Basado en Problemas (ABP)</strong> y el <strong>Design Thinking</strong> para que los estudiantes pasen de la reflexión a la acción. El objetivo es que analicen un problema real de su comunidad escolar y transformen su análisis crítico en soluciones creativas y tangibles para el colegio.</p>
+                </div>
+            </section>
+
+            <!-- III. SITUACIÓN PROBLEMÁTICA -->
+            <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-green-50 flex flex-col h-full">
+                <h2 class="text-xl font-bold text-amber-600 mb-4 flex items-center">
+                    <i class="ph-fill ph-warning-circle text-amber-500 mr-3 text-2xl"></i>
+                    III. Situación Problemática del Contexto
+                </h2>
+                <div class="text-gray-700 leading-relaxed mb-4">
+                    <p>En la I.E.P. Cristo te Ama, se ha observado un incremento significativo en el uso y desecho de plásticos de un solo uso (envolturas, botellas, cubiertos) durante las horas de recreo. A pesar de contar con tachos de colores en el patio, los estudiantes no clasifican la basura y los espacios compartidos quedan sucios. Esta situación no solo afecta la estética y la higiene del colegio, sino que refleja una desconexión con el cuidado del medio ambiente local en la ciudad de Tarma.</p>
+                </div>
+                <div class="bg-amber-50 rounded-xl p-5 border border-amber-200 mt-auto">
+                    <h3 class="font-bold text-amber-800 mb-2 flex items-center">
+                        <i class="ph-fill ph-target mr-2"></i> Reto para los estudiantes:
+                    </h3>
+                    <p class="text-amber-900 font-medium">¿Por qué seguimos contaminando nuestro propio espacio de descanso y cómo podemos usar la tecnología o el diseño para concientizar y transformar los hábitos de nuestros compañeros?</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- IV. PROPÓSITOS DE APRENDIZAJE -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-green-50">
+            <h2 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+                <i class="ph-fill ph-plant text-green-500 mr-3 text-3xl"></i>
+                IV. Propósitos de Aprendizaje
+            </h2>
+            
+            <div class="space-y-6">
+                <!-- Competencia -->
+                <div class="flex items-start">
+                    <div class="bg-green-100 p-2 rounded-lg mr-4 mt-1">
+                        <i class="ph-fill ph-star text-green-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Competencia</h3>
+                        <p class="text-gray-700">Gestiona responsablemente el espacio y el ambiente / Diseña y construye soluciones tecnológicas para resolver problemas de su entorno.</p>
+                    </div>
+                </div>
+
+                <!-- Evidencia -->
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-lg mr-4 mt-1">
+                        <i class="ph-fill ph-files text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Evidencia de Aprendizaje</h3>
+                        <p class="text-gray-700">Un panel de análisis crítico (diagrama de causa-efecto) y el boceto/prototipo de una "Caja Ecológica de Alerta Ambiental" interactiva, acompañada de una propuesta para difundirla digitalmente.</p>
+                    </div>
+                </div>
+
+                <!-- Criterios -->
+                <div class="flex items-start">
+                    <div class="bg-purple-100 p-2 rounded-lg mr-4 mt-1">
+                        <i class="ph-fill ph-check-circle text-purple-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">Criterios de Evaluación</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="bg-purple-200 text-purple-800 font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3 flex-shrink-0 mt-0.5">1</span>
+                                <span>Identifica y argumenta las causas y consecuencias del problema de los residuos en el colegio (Pensamiento Crítico).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-purple-200 text-purple-800 font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3 flex-shrink-0 mt-0.5">2</span>
+                                <span>Propone una solución creativa y viable que responda directamente al problema analizado (Creatividad).</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- V. SECUENCIA DIDÁCTICA -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-green-50">
+            <h2 class="text-2xl font-bold text-green-800 mb-8 flex items-center pb-4 border-b border-gray-100">
+                <i class="ph-fill ph-chalkboard-teacher text-green-500 mr-3 text-3xl"></i>
+                V. Secuencia Didáctica
+            </h2>
+
+            <div class="relative border-l-2 border-green-200 ml-4 md:ml-6 space-y-12">
+                
+                <!-- INICIO -->
+                <div class="relative pl-8 md:pl-10">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-teal-50 rounded-xl p-5 border border-teal-100 shadow-sm transition hover:shadow-md">
+                        <div class="flex justify-between items-center mb-4 border-b border-teal-200 pb-2">
+                            <h3 class="text-xl font-bold text-teal-800">INICIO</h3>
+                            <span class="bg-teal-200 text-teal-800 text-xs font-bold px-3 py-1 rounded-full flex items-center">
+                                <i class="ph ph-timer mr-1"></i> 15 minutos
+                            </span>
+                        </div>
+                        <ul class="space-y-4 text-gray-700">
+                            <li>
+                                <strong class="text-teal-700 block mb-1"><i class="ph-fill ph-image mr-1"></i> Motivación:</strong> 
+                                El docente presenta fotografías reales del patio del colegio tomadas justo después del recreo, mostrando la acumulación de residuos cerca de los tachos vacíos.
+                            </li>
+                            <li>
+                                <strong class="text-teal-700 block mb-1"><i class="ph-fill ph-chat-circle-question mr-1"></i> Saberes Previos:</strong> 
+                                Se plantea la pregunta abierta: "¿Qué historia nos cuentan estas fotos sobre nosotros?"
+                            </li>
+                            <li>
+                                <strong class="text-teal-700 block mb-1"><i class="ph-fill ph-lightning mr-1"></i> Conflicto Cognitivo (Detonador):</strong> 
+                                "Si todos en el colegio sabemos que la basura va al tacho y conocemos los colores del reciclaje, ¿por qué el patio sigue viéndose así todos los días?"
+                            </li>
+                            <li>
+                                <strong class="text-teal-700 block mb-1"><i class="ph-fill ph-flag-pennant mr-1"></i> Propósito:</strong> 
+                                Hoy analizaremos críticamente por qué ocurre este problema en nuestro colegio y diseñaremos una solución innovadora para cambiar esta realidad.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- DESARROLLO -->
+                <div class="relative pl-8 md:pl-10">
+                    <div class="timeline-dot" style="background-color: #3b82f6; border-color: #dbeafe;"></div>
+                    <div class="bg-blue-50 rounded-xl p-5 border border-blue-100 shadow-sm transition hover:shadow-md">
+                        <div class="flex justify-between items-center mb-4 border-b border-blue-200 pb-2">
+                            <h3 class="text-xl font-bold text-blue-800">DESARROLLO</h3>
+                            <span class="bg-blue-200 text-blue-800 text-xs font-bold px-3 py-1 rounded-full flex items-center">
+                                <i class="ph ph-timer mr-1"></i> 60 minutos
+                            </span>
+                        </div>
+                        
+                        <!-- Fase 1 -->
+                        <div class="mb-6">
+                            <h4 class="font-bold text-blue-700 mb-3 bg-blue-100 inline-block px-3 py-1 rounded-md text-sm">Fase 1: Activación del Pensamiento Crítico (Deconstrucción del problema)</h4>
+                            <ul class="space-y-3 text-gray-700 ml-2">
+                                <li><strong>Trabajo en equipo:</strong> Los estudiantes se agrupan y reciben una matriz de análisis crítico.</li>
+                                <li><strong>Pregunta de Análisis (Causas):</strong> ¿Qué nos desmotiva o nos impide clasificar correctamente los residuos? <span class="text-sm text-gray-500 italic">(Ej. prisa por jugar, los tachos son aburridos, falta de costumbre, los empaques de los quioscos).</span></li>
+                                <li><strong>Pregunta de Evaluación (Consecuencias):</strong> ¿Cómo impacta esta basura en nuestra convivencia escolar diaria y en el ecosistema de nuestra ciudad?</li>
+                                <li><strong>Plenaria:</strong> Cada grupo fundamenta sus hallazgos, alejándose de respuestas memorísticas (como "la contaminación es mala") para enfocarse en el comportamiento real de su comunidad escolar.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Fase 2 -->
+                        <div>
+                            <h4 class="font-bold text-blue-700 mb-3 bg-blue-100 inline-block px-3 py-1 rounded-md text-sm">Fase 2: Activación de la Creatividad (Ideación y Prototipado)</h4>
+                            <ul class="space-y-3 text-gray-700 ml-2">
+                                <li><strong>El Reto:</strong> Sabiendo que los tachos normales no están funcionando, el docente lanza el desafío: <em>"Diseñemos un sistema de recolección o una campaña que obligue a los estudiantes a prestar atención y participar".</em></li>
+                                <li><strong>Brainstorming (Lluvia de ideas):</strong> Los estudiantes proponen soluciones disruptivas. Se les anima a integrar elementos interactivos.</li>
+                                <li><strong>Prototipado:</strong> En papelógrafos o con material reciclado, los grupos diseñan su propuesta. Por ejemplo, pueden bocetar la estructura de Cajas Ecológicas de Alerta Ambiental <span class="text-sm text-gray-500 italic">(contenedores con sensores mecánicos, formas de juegos arcade, o sistemas de puntos)</span>.</li>
+                                <li><strong>Escalabilidad Digital:</strong> Para darle un enfoque moderno, se les pide que diseñen en una hoja cómo se vería una página web (un portal escolar) donde se reporten los logros de reciclaje del colegio, integrando así la solución física con la concientización digital.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CIERRE -->
+                <div class="relative pl-8 md:pl-10">
+                    <div class="timeline-dot" style="background-color: #8b5cf6; border-color: #ede9fe;"></div>
+                    <div class="bg-purple-50 rounded-xl p-5 border border-purple-100 shadow-sm transition hover:shadow-md">
+                        <div class="flex justify-between items-center mb-4 border-b border-purple-200 pb-2">
+                            <h3 class="text-xl font-bold text-purple-800">CIERRE</h3>
+                            <span class="bg-purple-200 text-purple-800 text-xs font-bold px-3 py-1 rounded-full flex items-center">
+                                <i class="ph ph-timer mr-1"></i> 15 minutos
+                            </span>
+                        </div>
+                        <ul class="space-y-4 text-gray-700">
+                            <li>
+                                <strong class="text-purple-700 block mb-1"><i class="ph-fill ph-presentation-chart mr-1"></i> Socialización:</strong> 
+                                Dos grupos presentan sus prototipos y explican cómo su invento ataca directamente la causa principal que descubrieron en la fase de análisis.
+                            </li>
+                            <li>
+                                <strong class="text-purple-700 block mb-1"><i class="ph-fill ph-brain mr-1"></i> Metacognición:</strong> 
+                                Se reflexiona con las siguientes preguntas:
+                                <ul class="list-disc ml-6 mt-2 space-y-1 text-gray-600">
+                                    <li>¿Qué fue más difícil: descubrir por qué ensuciamos o inventar la solución?</li>
+                                    <li>¿De qué manera nuestra propuesta ayuda a construir un colegio mejor para todos?</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong class="text-purple-700 block mb-1"><i class="ph-fill ph-list-checks mr-1"></i> Evaluación:</strong> 
+                                Se aplica una lista de cotejo basada en los criterios de evaluación, valorando la profundidad del argumento (crítica) y la originalidad del prototipo (creatividad).
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-900 text-green-100 py-8 text-center mt-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <i class="ph-fill ph-leaf text-3xl text-green-500 mb-3"></i>
+            <p class="text-sm opacity-80">Diseñado para la I.E.P. Cristo te Ama - Tarma</p>
+            <p class="text-xs opacity-60 mt-1">Educación Primaria - V Ciclo</p>
+        </div>
+    </footer>
+
+</body>
+</html>
